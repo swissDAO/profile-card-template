@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="swissDAO">
+    <meta property="og:description" content="swissDAO">
+    <meta property="og:url" content="Footer Text">
+    <meta property="og:image"
+        content="https://media.discordapp.net/attachments/773005768458764349/851365652546715678/alpha.jpg?width=461&height=461">
+    <meta name="theme-color" content="#ff0000">
+    <meta name=“robots” content=“INDEX, FOLLOW”>
+    <link rel="stylesheet" href="style.css" />
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/alpha.jpg" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/css/all.css"
+      integrity="sha512-ajhUYg8JAATDFejqbeN7KbF2zyPbbqz04dgOLyGcYEk/MJD3V+HJhJLKvJ2VVlqrr4PwHeGTTWxbI+8teA7snw=="
+      crossorigin="anonymous"
+    />
+    <title>Tom Libert</title>
+	  <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+        <script>
+            const abi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"destroy","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_messageHash","type":"bytes32"}],"name":"getEthSignedMessageHash","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"_MemberToIncreaseReputation","type":"address"},{"internalType":"uint256","name":"_lastReputationValue","type":"uint256"},{"internalType":"uint256","name":"_valueToIncreaseBy","type":"uint256"}],"name":"getMessageHash","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"_memberAddress","type":"address"}],"name":"getReputation","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_memberAddress","type":"address"},{"internalType":"uint256","name":"_increraseReputationBy","type":"uint256"}],"name":"increaseReputation","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_ethSignedMessageHash","type":"bytes32"},{"internalType":"bytes","name":"_signature","type":"bytes"}],"name":"recoverSigner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"_memberAddress","type":"address"}],"name":"removeReputation","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"reputations","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_memberAddress","type":"address"},{"internalType":"uint256","name":"_newReputation","type":"uint256"}],"name":"setReputation","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes","name":"sig","type":"bytes"}],"name":"splitSignature","outputs":[{"internalType":"bytes32","name":"r","type":"bytes32"},{"internalType":"bytes32","name":"s","type":"bytes32"},{"internalType":"uint8","name":"v","type":"uint8"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"_MemberToIncreaseReputation","type":"address"},{"internalType":"uint256","name":"_lastReputationValue","type":"uint256"},{"internalType":"uint256","name":"_valueToIncreaseBy","type":"uint256"},{"internalType":"address","name":"_addressSigner1","type":"address"},{"internalType":"bytes","name":"_signatureSigner1","type":"bytes"},{"internalType":"address","name":"_addressSigner2","type":"address"},{"internalType":"bytes","name":"_signatureSigner2","type":"bytes"}],"name":"submitSignedReputationIncreaseRequest","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_signer","type":"address"},{"internalType":"address","name":"_MemberToIncreaseReputation","type":"address"},{"internalType":"uint256","name":"_lastReputationValue","type":"uint256"},{"internalType":"uint256","name":"_valueToIncreaseBy","type":"uint256"},{"internalType":"bytes","name":"signature","type":"bytes"}],"name":"verifyIndividualy","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"pure","type":"function"}] // copy the contract ABI here
+            const provider = new ethers.providers.JsonRpcProvider('https://polygon-mumbai.g.alchemy.com/v2/nrIFJFh24-C-SN8UZuK8poNHd6ky2Gqc');
+            function readFromBlockchain() { 
+                const contractAddress = '0xe5BD2CD197b5F9563EDa46329Cc7b3b2352DF35A'
+                const connectedContract = new ethers.Contract(contractAddress, abi, provider);
+                const txn = connectedContract.getReputation("0xc4B041abe7a89944284fa74f603b5B30e8A07557")
+                txn.then(function(result) {
+                    document.getElementById("experiencePoints").innerHTML = "<b>XP</b>: " + result;
+                    document.getElementById("level").innerHTML = "<b>Level:</b> 3";
+                    document.getElementById("status").innerHTML = "<b>Status:</b> Core Contributor";
+                    document.getElementById("tier").innerHTML = "<b>Tier:</b> Community";
+
+                })
+            }
+        </script>
+  </head>
+  <body onLoad="readFromBlockchain()" id="top" oncontextmenu="return false" onclick="play();">
+    <section id="hero" class="s-home target-section">
+      <div class="shadow-overlay" id="wave"></div>
+      <div class="home-content">
+        <div class="row home-content__main">
+          <main>
+            <div class="mainCard" data-tilt>
+              <div class="header">
+                <div class="logo" data-tilt>
+                  <img src="./assets/Tom.jfif" alt="Logo" />
+                </div>
+                <div onClick="contractInteraction()" style="cursor:pointer;" class="name">
+                  <h1>Tom Libert</h1>
+                </div>
+		    <div class="subtitle">
+                    <p id="experiencePoints">
+                      <b>XP:</b> loading...
+                    </p>
+                </div>
+		    <div class="subtitle">
+                    <p id="level">
+                      <b>Level:</b> loading...
+                    </p>
+                </div>
+		    <div class="subtitle">
+                    <p id="status">
+                      <b>Status:</b> loading...
+                    </p>
+                </div>
+		    	  <div class="subtitle">
+                    <p id="tier">
+                      <b>Tier:</b> loading...
+                    </p>
+                </div>
+      
+                <!-- <div class="social">
+                  <a href="#"><i class="fab fa-telegram"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-github"></i></a>
+                  <a href="#"><i class="fas fa-envelope-open"></i></a>
+                </div> -->
+      
+                <div class="lower" data-tilt>
+                  <div class="text1">
+                    <p>
+                      I am Tom and I'm a swissDAO Engineer and an Aspiring Programmer.
+                    </p>
+                  </div>
+      
+                  <div class="social">
+                      <a href="https://www.linkedin.com/in/tom-libert/" id="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+                      <a href="https://www.linkedin.com/in/tom-libert/" id="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                      <a href="https://www.linkedin.com/in/tom-libert/" target="_blank"><i class="fab fa-github"></i></a>
+                      <a href="https://www.linkedin.com/in/tom-libert/" id="mail" target="_blank"><i class="fas fa-envelope-open"></i></a>
+                    </div>
+      
+                  <div class="buttons">
+                    <a href="https://swissdao.space/" target="_blank">Website</a>
+                    <a href="https://swissdao.space/" target="_blank">Contact</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+      
+      </section>
+
+
+    <script src="assets/vanilla_tilt.js" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.3/dist/aos.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.96.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.96.0/examples/js/renderers/CanvasRenderer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.96.0/examples/js/renderers/Projector.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript">
+    document.onkeydown = function (e) {
+      e = e || window.event;
+      if (e.ctrlKey) {
+        var c = e.which || e.keyCode;
+        switch (c) {
+          case 83:
+          case 85:
+          case 65:
+          case 73:
+            e.preventDefault();
+            e.stopPropagation();
+            break;
+        }
+      }
+    };
+
+    window.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    }, false);
+  </script>
+  </body>
+</html>
